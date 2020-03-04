@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Darío Garigliotti | Pi, the Eiffel tower, a lunar crater or two, and everything in between</title>
+  <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+">
+
+  
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="/blog/2020/sema-search/">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    
+    <span class="site-title">
+        
+        <strong>Darío</strong> Garigliotti
+    </span>
+    
+
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+      <div class="trigger">
+        <!-- About -->
+        <a class="page-link" href="/">about</a>
+
+        <!-- Blog -->
+        <a class="page-link" href="/blog/">blog</a>
+
+        <!-- Pages -->
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="/lectures/">lectures</a>
+          
+        
+          
+        
+          
+            <a class="page-link" href="/publications/">publications</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+        <!-- Talks: analogous to blog in every aspect of its implementation -->
+        <a class="page-link" href="/talks/">talks</a>
+
+        <!-- CV link -->
+        <!-- <a class="page-link" href="/assets/pdf/CV.pdf">vitae</a> -->
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Pi, the Eiffel tower, a lunar crater or two, and everything in between</h1>
+    <p class="post-meta">January 6, 2020</p>
+  </header>
+
+  <article class="post-content">
+    <p>Time for a short story. The studies for my Masters degree started, as usual in my faculty, with a mandatory entrance course and exam that one has to pass in order to be admitted in the degree studies themselves. It is a course in fundamentals of maths, designed to give everybody a common ground in basics for the degrees in mathematics, astronomy, physics and computer science. One thing, in particular, has stucked in my mind since then. When we refreshed the notion of set, one example was the set <em>A = {Pi, the Eiffel tower}</em>. Having studied sets and set operations  in early primary school, and never used them again during eleven years or more, the key thing there, the novelty for me by then, was the idea that a set could contain elements of different types. Until then, the intuition was to have a set of, say, apples, where everything is an apple. Or a set of numbers, where all are, well, numbers. Beyond that realization, this flexibility of sets was, I’d guess, never handy for any particular purpose, other than help remarking the nature of lists as a data structure where every element is of the same type. A similar notion of ensemble as a “salad of stuff” would appear again years later when I started working with knowledge repositories and knowledge bases.</p>
+
+<h3 id="entities">Entities</h3>
+
+<p>There I had it: Wikipedia, a large set of dispair things containing, among others, Pi, the Eiffel tower, Eiffel (the architect), Eiffel (the programming language), Paris (France), Paris (Texas), Paris (Hilton), the Pythagorean theorem, the NBA, the 1996-97 NBA season, and the Thirty Years War. People, objects, cities, abstract concepts, events. Each of these things is uniquely identified, and so corresponds to an <em>entity</em>. Entities, such as persons, organizations, and locations, are natural units for organizing information. And as we will see later, entities are at the core of the current paradigm of web search, since they can provide not only more focused responses, but often immediate answers.</p>
+
+<h3 id="semi-structured-knowledge">(Semi-)Structured Knowledge</h3>
+
+<p>A <em>knowledge repository</em> contains a collection of entities in a certain representation. Wikipedia is arguably the most widely known knowledge repository, where an entity is represented as a semi-structured article. That is, most of the document content is raw (or unstructured) text, with few structured information in the infoboxes presented as entity cards within the articles. Its collaborative project allows a large number of contributors to combine their efforts, daily used by millions of users around the world as their trustable reference in many areas of knowledge.</p>
+
+<p>Wikipedia has been created for human consumption. A <em>knowledge base</em> (KB), instead, contains structured knowledge, often extracted from free text, intended to be accessible to machines. Contrasting with the unstructured nature of textual documents, this structured format represents knowledge usually by Resource Description Framework (RDF) triples of the shape <em>(subject, predicate, object)</em>. Each of these triples declares a fact about the subject (an entity) by relating it with an object (a literal or another entity). For example, the fact that Oslo is the capital of Norway is represented by a triple <code class="language-plaintext highlighter-rouge">(Oslo, isCapitalOf, Norway)</code>, where <code class="language-plaintext highlighter-rouge">Oslo</code> is the unique identifier of an entity in the knowledge base that corresponds with the city of Oslo, <code class="language-plaintext highlighter-rouge">Norway</code> indentifies uniquely an entity that corresponds to Norway, and <code class="language-plaintext highlighter-rouge">isCapitalOf</code> is a predicate that captures the relationship between the subject and object. There may be other predicates between such a subject and an object, possibly more or less interesting or useful, like <code class="language-plaintext highlighter-rouge">isPlacedIn</code> or <code class="language-plaintext highlighter-rouge">isTheLargestCityOf</code>. The object could also be a literal, like in the case of declaring the fact about the number of inhabitants for a city. The alternative denomination of knowledge bases as knowledge graphs emphasizes the relationships between entities.</p>
+
+<p>A number of general-purpose knowledge bases have been developed along the recent years. DBpedia is widely used by researchers in areas such as Semantic Web and Information Retrieval. Developed by processing the semi-structured data from Wikipedia, it is a hub for multiple KBs to redirect to its large repository of entities. Other cross-domain KBs include YAGO, Freebase, and Wikidata. Alongside these ones, there also exist many purpose-specific knowledge bases, for example, GeoNames, WordNet, and DBLP, usually created for projects in specific domains. All these KBs are repositories of open data, freely available to everyone.</p>
+
+<p>The increased availability of structured data published in knowledge repositories and knowledge bases constitutes the pivotal component that sparked the evolution trend from a traditional paradigm of web search into a <em>semantic search</em> or <em>entity-oriented search</em>. It will be clear what this current paradigm is when we see below some examples that appear on a daily basis in our search results. But, what do we mean by semantic search?</p>
+
+<h3 id="semantic-search">Semantic search</h3>
+
+<p>Web search is a human experience of a very rapid and impactful evolution. It has become a key technology on which people rely daily for getting information about almost everything. This evolution of the search experience has also shaped the expectations of people about it. Many users seem to expect today’s web search engines to behave like a kind of “wise interpreter,” capable of understanding the intent and meaning behind a search query, realizing her current context, and responding to it directly and appropriately. Search by meaning, or semantic search, rather than just literal matches, relies then on semantically meaningful representations of the information need expressed by the user query.</p>
+
+<p>Consider the following search result from Google:</p>
+
+<div>
+    <img class="col three first" src="/assets/img/blog/thesis/figs/1.1-1.png" alt="" title="Example of result in semantic search: weather" />
+</div>
+
+<p>The query, “oslo weather,” leads to a widget that reports recent weather conditions, as well as presents forecasts for the next twenty-four hours and the next seven days.</p>
+
+<p>Now consider this other query:</p>
+
+<div>
+    <img class="col three first" src="/assets/img/blog/thesis/figs/1.1-2.png" alt="" title="Example of result in semantic search: sports match" />
+</div>
+
+<p>The display contains the result of the latest Liverpool-Barcelona match, with some statistics, and provides a link to a video with the match highlights on YouTube.</p>
+
+<p>Finally, consider this example:</p>
+<div>
+    <img class="col three first" src="/assets/img/blog/thesis/figs/1.1-3.png" alt="" title="Example of result in semantic search: stocks" />
+</div>
+
+<p>The search result presents an interactive chart with the stock exchange performance for Tesla Inc. intended in the query “tsla.”</p>
+
+<p>These three examples correspond to direct displays in which the search engine has gone beyond the traditional ten blue links, by aiming to <em>understand</em> the query intent and return in the search engine result page a direct answer when possible. Note also that the verticals appropriately provide rich content depending on each query: maps and images for the weather, videos and images for the match, and finance and news for the stock performance.</p>
+
+<p>Direct displays and verticals are examples of how major commercial search engines have indeed responded to user expectations, capitalizing on query semantics, i.e., <em>query understanding</em>, by introducing features which not only provide information directly but also engage the user to stay interacting with the results page.</p>
+
+<p>Knowledge panels are perhaps one of the most prominent features in the web search experience reflecting this recent evolution trend from search engines into answer engines. Below, the entity card that results from searching “oslo” in Google.</p>
+
+<div>
+    <img class="col two first" src="/assets/img/blog/thesis/figs/1.2.png" alt="" title="Example of an entity card" />
+</div>
+
+<p>Oslo is described by some of its <em>entity properties</em>, retrieved from some knowledge base of reference, such as a brief abstract, a handful of literal values like elevation and population, and related entities like the University of Oslo. Given the large portion of web search queries looking for entities, entities and their properties -attributes, types, and relationships- are first-class citizens in our space of structured knowledge.</p>
+
+<h3 id="entity-types">Entity types</h3>
+
+<p>A characteristic property of an entity is its <em>type</em>. For example, the entity Oslo is of type <em>City</em>. Other types for this entity are <em>Settlement</em>, a more general type than <em>City</em>, and <em>Norwegian city</em>, more specific than <em>City</em>.</p>
+
+<p>An entity is assigned one or more types from a type system of reference. Types in a type system are usually arranged in hierarchical relationships, which makes such a system to be known also as type taxonomy or type hierarchy.</p>
+
+<p>Types such as <em>City</em> and <em>Norwegian city</em> are intuitive semantic classes that group entities. It is possible to think in many other types for a given entity. 
+For example, Oslo is also a <em>European city</em>, and a <em>Norwegian city with more than 100,000 inhabitants</em>. Yet, in an actual scenario leveraging entity-oriented structured knowledge, the types available for an entity are usually the ones provided by the type taxonomy of reference. This is, depending on the type system that is used, a type that exists in a given taxonomy might not be available in another. As an example, the DBpedia Ontology is a rather small type hierarchy, manually curated, of a few more than 700 types in its current version.</p>
+
+<p>A little digression. Even though manually curated, its small size and the decisions behind its design make that, as we said, not every fact can be properly declared, or not at all, and, in the other hand, some types might look not so much useful. For example, since several versions of this ontology, one of the types in this ontology is <em>Lunar crater</em>. Yes, not just a crater, but a lunar one. How many lunar craters will be actual entities that benefit from the existence of <em>Lunar crater</em> to declare their type is unknown, but remind this example when we move to the next blog post (hint: physicist is not a type in DBpedia Ontology). 700 types might seem actually not so few, but considering how fast the exponential branching is from the root of the ontology, it is indeed rather a small size.</p>
+
+<p>Using DBpedia Ontology as reference, it is only possible to indicate that Oslo is a <em>City</em>, but not a <em>Norwegian city</em>, since this more specific type does not exist in the DBpedia Ontology. Instead, the Wikipedia category graph contains a category <em>Cities and towns in Norway</em>. This very large graph of categories records hierarchical relationships, but is not strictly a taxonomy. Other type hierarchies used by the research community include the YAGO taxonomy and Freebase types. This variety of possible type references will constitute one of the dimensions that we study through the work that I will describe in the next blog post, when we discuss type-aware entity retrieval, this is, retrieval of entities in web search taking advantage of the entity type information available in knowledge bases.</p>
+
+<p><br /></p>
+
+<p><em>If you are interested in more of this, please read Sections 1.1 and 2.2 of my thesis</em> <a href="http://bit.ly/dariogarigliotti-thesis">Task-Based Support in Search Engines</a>.</p>
+
+
+  </article>
+
+  
+
+</div>
+
+      </div>
+    </div>
+
+    <footer>
+
+  <div class="wrapper">
+    &copy; Copyright 2020 Darío Garigliotti.
+    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+
+    
+  </div>
+
+</footer>
+
+
+    <!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Load Common JS -->
+<script src="/assets/js/common.js"></script>
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+<script src="/assets/js/katex.js"></script>
+
+
+
+
+<!-- Include custom icon fonts -->
+<link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/assets/css/academicons.min.css">
+
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-XXXXXXXXX', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+  </body>
+
+</html>

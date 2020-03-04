@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Darío Garigliotti | a post with images</title>
+  <title>Darío Garigliotti | May I suggest you something different?</title>
   <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 ">
 
@@ -15,7 +15,7 @@
   <link rel="shortcut icon" href="/assets/img/favicon.ico">
 
   <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="canonical" href="/blog/2015/images/">
+  <link rel="canonical" href="/blog/2020/suggs-2-of-2/">
 </head>
 
 
@@ -49,7 +49,7 @@
         <a class="page-link" href="/">about</a>
 
         <!-- Blog -->
-        <!-- <a class="page-link" href="/blog/">blog</a> -->
+        <a class="page-link" href="/blog/">blog</a>
 
         <!-- Pages -->
         
@@ -67,6 +67,8 @@
         
           
             <a class="page-link" href="/publications/">publications</a>
+          
+        
           
         
           
@@ -102,34 +104,53 @@
         <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">a post with images</h1>
-    <p class="post-meta">May 15, 2015</p>
+    <h1 class="post-title">May I suggest you something different?</h1>
+    <p class="post-meta">January 23, 2020</p>
   </header>
 
   <article class="post-content">
-    <p>Jean shorts raw denim Vice normcore, art party High Life PBR skateboard stumptown vinyl kitsch. Fingerstache four loko meh 8-bit, tousled banh mi tilde forage Schlitz dreamcatcher twee 3 wolf moon. Chambray asymmetrical paleo salvia, sartorial umami four loko master cleanse drinking vinegar brunch.</p>
+    <p>Our second work on query suggestions as a tool for supporting task-based search addresses the same original problem of producing a ranked list of related queries to an initial user input query. As described in the previous post, the query suggestions that our envisaged interface would present actually come in two flavors, query completions and query refinements.</p>
 
-<div class="img_row">
-    <img class="col three" src="/assets/img/9.jpg" />
+<div>
+    <img class="col three first" src="/assets/img/blog/thesis/figs/6.1.png" alt="" title="Query suggestion modes" />
 </div>
-<div class="img_row">
-    <img class="col three" src="/assets/img/7.jpg" />
+
+<p><br /></p>
+
+<p>In the context of query suggestions for supporting task-based search, it was, before our work, an open question whether a unified method can produce suggestions in both flavors, or rather specialized models are required. Also, an end-to-end probabilistic generative model that combines keyphrase-based suggestions extracted from multiple information sources relies heavily on query suggestion services from major web search engines. Then, another main challenge is to solve this task without relying on suggestions provided by a major web search engine (and possibly even without using a query log).</p>
+
+<p>Adopting a general two-step pipeline approach, consisting of suggestion generation and suggestion ranking steps, we focus exclusively on the first component. Our aim is to generate sufficiently many high-quality query suggestion candidates. The subsequent ranking step will then produce the final ordering of suggestions by reranking these candidates (and ensuring their diversity with respect to the possible subtasks).</p>
+
+<p><em>Can existing query suggestion methods generate high-quality query suggestions for task-based search?</em> We study three methods from the literature. The first two methods can only produce query completions, while the third one is able to handle both query completions and refinements. Specifically, we employ a popular suffix method, a neural language model, and a sequence-to-sequence model to generate candidate suggestions.</p>
+
+<div>
+    <img class="col three first" src="/assets/img/blog/thesis/figs/6.99.png" alt="" title="Neural language model" />
 </div>
 <div class="col three caption">
-    A simple, elegant caption looks good between image rows, after each row, or doesn't have to be there at all.
-</div>
-<div class="img_row">
-    <img class="col two first" src="/assets/img/8.jpg" />
-    <img class="col one last" src="/assets/img/10.jpg" />
+    Neural language model.
 </div>
 
-<p>Slow-carb four dollar toast Helvetica pop-up. Kale chips next level literally trust fund Pitchfork. Jean shorts Pinterest beard, farm-to-table irony craft beer swag tofu 8-bit Banksy. Quinoa forage fanny pack, pug hashtag Echo Park heirloom Schlitz tote bag artisan Neutra mumblecore 90’s shabby chic raw denim.</p>
+<p><br /></p>
 
-<div class="img_row">
-    <img class="col one first" src="/assets/img/11.jpg" />
-    <img class="col one" src="/assets/img/12.jpg" />
-    <img class="col one last" src="/assets/img/7.jpg" />
-</div>
+<p><em>What are useful information sources for each method?</em> We consider three independent information sources. We are particularly interested in finding out how a task-oriented knowledge base (Know-How) and a community question answering site (WikiAnswers) fare against using a query log (AOL).</p>
+
+<p>Our experimental results lead to the following main observations:</p>
+
+<ul>
+  <li> sequence-to-sequence approach performs best among the tested three methods, and, overall, it can generate suggestions in both query completion and query refinement flavors;
+  </li>
+  <li> ur best numbers are similar to that of the Google API, but with this API the number of generated suggestions per query is limited compared to ours;
+  </li>
+  <li> regarding the data sources, we observe that, as expected, the query log is the one leading to the highest performance, yet it does not perform well on query refinements;
+  </li>
+  <li> overall, we find that different method-source configurations contribute unique suggestions, and thus it is beneficial to combine them.
+  </li>
+</ul>
+
+<p><br /></p>
+
+<p><em>If you are interested in more of this, please read Sections 6.5 and 6.6 of my thesis</em> <a href="http://bit.ly/dariogarigliotti-thesis">Task-Based Support in Search Engines</a><em>, for technical details of the problem, the terminology, the methodology, and the experimental results and analysis.</em></p>
+
 
   </article>
 

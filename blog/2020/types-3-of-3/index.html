@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Darío Garigliotti | You-you-you're just my type!</title>
+  <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+">
+
+  
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="/blog/2020/types-3-of-3/">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    
+    <span class="site-title">
+        
+        <strong>Darío</strong> Garigliotti
+    </span>
+    
+
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+      <div class="trigger">
+        <!-- About -->
+        <a class="page-link" href="/">about</a>
+
+        <!-- Blog -->
+        <a class="page-link" href="/blog/">blog</a>
+
+        <!-- Pages -->
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="/lectures/">lectures</a>
+          
+        
+          
+        
+          
+            <a class="page-link" href="/publications/">publications</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+        <!-- Talks: analogous to blog in every aspect of its implementation -->
+        <a class="page-link" href="/talks/">talks</a>
+
+        <!-- CV link -->
+        <!-- <a class="page-link" href="/assets/pdf/CV.pdf">vitae</a> -->
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">You-you-you're just my type!</h1>
+    <p class="post-meta">January 16, 2020</p>
+  </header>
+
+  <article class="post-content">
+    <p>This is the last part in a series on type-aware entity retrieval. 
+Through previous posts, I have described our work to answer the core question on how to utilize type-based information to improve entity retrieval. We have seen results across several configurations combining choices for three dimensions of interest, all of those studies using an idealized setting, where target types were provided by an oracle. And we have also described and evaluated a method to automatically identify target entity types. We now plug these target types automatically identified in place of the oracle, in order to study how well type-aware entity retrieval performs by using these kind of types instead of perfect, idealized information.</p>
+
+<p>This corresponds to an extrinsic evaluation of the method for hierarchical target type identification, i.e., evaluating the “goodness” of the target types automatically identified by using them in an external task (here, entity retrieval). Or, in a third, more formal statement: have these entity retrieval systems <em>got very specific taste</em> as the persona in the song by Saint Motel, when it’s about type-based information, or will they do fine enough with less perfect, more realistically available data?</p>
+
+<p>We evaluate all combinations of retrieval models, type representation modes and (target entity type) identification models, alongside the single DBpedia Ontology as type taxonomy (since it is the only type system used to annotate the target entity type collection). We also compute the performances using the target type labels provided by the human assessors as target entity types in the collection, referred to as <em>Oracle 2</em> (to distinguish it from <em>Oracle 1</em>, the original oracle with perfect information).</p>
+
+<p>Overall, our results show that when target entity types are identified automatically, using hierarchical relationships from ancestor types is the most effective way of representing entity type information; keeping only the most specific types is helpful only when an accurate target entity type identification method is employed.</p>
+
+<p>We observe that strict filtering achieves the best performance among all configurations, and the best results are obtained when it is combined with the LTR identification model. Moreover, We verify that an effective target entity type identification method, returning relevant types at the top ranks, can bring considerable retrieval improvements using the strict filtering retrieval model.</p>
+
+<div>
+    <img class="col three first" src="/assets/img/blog/thesis/figs/4.3.png" alt="" title="Results: type-aware entity retrieval with target entity types automatically identified" />
+</div>
+<div class="col three caption">
+    Entity retrieval performance for all combinations of retrieval models and type representation modes, using automatically identified target types from DBpedia. The red line corresponds to the term-based baseline. Performance is measured by NDCG@10.
+</div>
+
+<p><br /></p>
+
+<p>In order to better understand the effects of automatic target type identification, we break down the entity retrieval results into the four query categories present in the DBpedia-Entity v2 collection. These range from short keyword queries (e.g., “guitar origin blues”), to named entity queries (e.g., “brooklyn bridge”), to entity list queries (e.g., “products of medimmune, inc”), to natural language queries (e.g., “who was called scarface?”). We find that type-aware retrieval using the LTR method significantly and consistently outperforms the term-based baseline for all query categories.</p>
+
+<div>
+    <img class="col three first" src="/assets/img/blog/thesis/figs/4.6.png" alt="" title="Results: per-query qualitative results breakdown" />
+</div>
+<div class="col three caption">
+    Differences in NDCG@10 per query between type-aware entity retrieval and its corresponding (term-based) baseline, using the strict filtering model with top-level DBpedia target types automatically detected by LTR, grouped by query categories.
+</div>
+
+<p><br /></p>
+
+<p><em>If you are interested in more of this, please read Chapter 4, in particular Section 4.5.2, of my thesis</em> <a href="http://bit.ly/dariogarigliotti-thesis">Task-Based Support in Search Engines</a><em>, for technical details of the problem, the terminology, the methodology, and the experimental results and analysis.</em></p>
+
+
+  </article>
+
+  
+
+</div>
+
+      </div>
+    </div>
+
+    <footer>
+
+  <div class="wrapper">
+    &copy; Copyright 2020 Darío Garigliotti.
+    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+
+    
+  </div>
+
+</footer>
+
+
+    <!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Load Common JS -->
+<script src="/assets/js/common.js"></script>
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+<script src="/assets/js/katex.js"></script>
+
+
+
+
+<!-- Include custom icon fonts -->
+<link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/assets/css/academicons.min.css">
+
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-XXXXXXXXX', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+  </body>
+
+</html>

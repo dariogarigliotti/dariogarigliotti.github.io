@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Darío Garigliotti | Einstein was not a physicist</title>
+  <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+">
+
+  
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="/blog/2020/types-1-of-3/">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    
+    <span class="site-title">
+        
+        <strong>Darío</strong> Garigliotti
+    </span>
+    
+
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+      <div class="trigger">
+        <!-- About -->
+        <a class="page-link" href="/">about</a>
+
+        <!-- Blog -->
+        <a class="page-link" href="/blog/">blog</a>
+
+        <!-- Pages -->
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="/lectures/">lectures</a>
+          
+        
+          
+        
+          
+            <a class="page-link" href="/publications/">publications</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+        <!-- Talks: analogous to blog in every aspect of its implementation -->
+        <a class="page-link" href="/talks/">talks</a>
+
+        <!-- CV link -->
+        <!-- <a class="page-link" href="/assets/pdf/CV.pdf">vitae</a> -->
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Einstein was not a physicist</h1>
+    <p class="post-meta">January 9, 2020</p>
+  </header>
+
+  <article class="post-content">
+    <p>I mean, of course Einstein was a physicist, but is it not a very catchy title? I mean, is it not what you would conclude after not finding <em>Physicist</em> among the types of the entity <em>Albert Einstein</em>? I get it: you are aware that knowledge bases and repositories are not perfect, and in particular, are incomplete. But what about the vast majority of users who very likely trust in these resources, specially Wikipedia, as a holy book, and could not imagine that <em>Albert Einstein</em> not typed as <em>Physicist</em> was just missing? Worse, that they would never imagine that a type like <em>Physicist</em> is not even available? And I get it: you know Einstein was a physicist and so you don’t need to learn if by exploring <code class="language-plaintext highlighter-rouge">(subject, predicate, object)</code> triples in a knowledge base or checking the bottom part with the categories in the Einstein article on Wikipedia. But what about less known facts? And what about cases where that information was useful? What about cases, like, I don’t know… entity retrieval?</p>
+
+<p>OK, let’s bring some order back to this very young blog. In the last post, I explained entity types, and described some type systems where types are made available. And, since I was there and felt powerful, I kind of ranted about why I found it not necessarily appropiated in the best of DBpedia Ontology extent to contain the type <em>Lunar crater</em>. Given the rather small size of this ontology, I just couldn’t grasp why this type was worthy to make it in this type system, since there should likely be many, many, many… few entities of interest to be typed as lunar craters -this is not neglecting the amount of lunar craters, but just the amount of uniquely identified ones each worthy to have a corresponding entity in a knowledge base. Yes, I felt untouchable. I apologize. Indeed, one has to understand that there are decisions behind that have been made by experts in ontology design. Yet, to have you on my side, I teased that physicist is not a type available in DBpedia. It is possible to indicate that Einstein was a <em>Scientist</em>, but <em>Physicist</em> is not among the few children types of <em>Scientist</em>. <em>Physicist</em> actually is not anywhere in DBpedia Ontology. Same as <em>Mathematician</em>, for example. (So, good luck to all of you physicists and mathematicians, when trying to be typed as such in this ontology. We hope you don’t mind to know that <em>Biologist</em> made it as a type there and you, well, you just have to wait a bit more for a newer version, hopefully. Welcome, Darwin, Pasteur, and Fleming. Sayonara, Mr. Newton!)</p>
+
+<h3 id="entity-retrieval">Entity retrieval</h3>
+
+<p>Entity retrieval is the task of obtaining a ranked list of entities relevant to a search query. Many queries are entity-oriented, that is, queries whose expected result is an entity or a list of entities, or queries that contain entity mentions. Ranking entities in response to a search query is then an important problem.</p>
+
+<p>Type information is known to contribute to entity retrieval. As an illustration, consider the scenario of a user planning a trip across Europe, and so, wishing to know in which cities she can use the Uber car sharing service. After issuing the query “cities in europe where uber is available,” the search engine we envisage would return a list of entities, according to some ranking criteria, as shown in this figure:</p>
+
+<div>
+    <img class="col three first" src="/assets/img/blog/thesis/figs/1.3.png" alt="" title="Envisaged type-aware entity retrieval system" />
+</div>
+
+<p><br /></p>
+
+<p>To achieve this, the system could try to identify the type of entities (here, European cities) that the query is seeking, which we refer to as <em>target entity types</em>. This type-based information could then be combined with the types assigned to each entity in a reference knowledge base, in order to improve the ranking of results.</p>
+
+<div>
+    <img class="col three first" src="/assets/img/blog/thesis/figs/3.1.png" alt="" title="Type-aware entity retrieval" />
+</div>
+<div class="col three caption">
+    Illustration of type-aware entity retrieval, where the target types sought by a query (left) are matched against the types that are assigned to the given entity in the knowledge base (right).
+</div>
+
+<p><br /></p>
+
+<p>We conducted a research around a main question: <em>How can one exploit entity type information to improve entity retrieval?</em> The concept of entity types, while seemingly straightforward, turns out to be a multifaceted research problem that, at the moment of our work, had not been thoroughly investigated in the literature.</p>
+
+<p>Historically, it was assumed that the user complements the keyword query with one or more target types, using Wikipedia categories as the type system. Further developments were motivated and driven by the peculiarities of Wikipedia’s category system. Prior to our work, it was not known whether the same methods prove effective, and even if these issues persist at all, in case of other type taxonomies. Hence, we consider and systematically compare multiple type taxonomies (DBpedia, Freebase, Wikipedia, and YAGO).</p>
+
+<p>Additionally, there is the issue of representing entity type information, more specifically, to what extent the hierarchy of the taxonomy should be preserved. Three type representation modes were considered in our work: most specific types, top-level types, and all types along the path to the top type.</p>
+
+<div>
+    <img class="col three first" src="/assets/img/blog/thesis/figs/3.2.png" alt="" title="Dimension of type representation" />
+</div>
+<div class="col three caption">
+    Alternative ways of representing entity-type assignments with respect to the type taxonomy. The dashed arrows point to the types that are assigned to entity <i>e</i>. The root node of the taxonomy is labeled with <i>t_0</i>.
+</div>
+
+<p><br /></p>
+
+<p>A third question is how to combine type-based and text-based matching in the retrieval model. We studied three type-aware entity retrieval models: strict filtering, soft filtering, and interpolation.</p>
+
+<p>Throughout our experiments, we make use of a so-called <em>target entity types oracle</em>. We assume that there is an “oracle” process in place that provides us with the (distribution of) correct target types for a given query. This corresponds to the setting that was employed at previous benchmarking campaigns, where target types are provided explicitly. We employ this idealized setting to ensure that our results reflect the full potential of using type information, without being hindered by the imperfections of an automated type detector.</p>
+
+<p>We systematically evaluate all combinations of the three proposed dimensions -type taxonomies, type representation modes, and retrieval models-, in contrast with a single, purely term-based baseline.</p>
+
+<p>Some of the main results found in our research can be summarized as follows:</p>
+
+<ul>
+    <li>Wikipedia, in combination with the most specific type representation, performs best;</li>
+    <li>keeping only the most specific types in the hierarchy provides the best performance across the board, for all configurations;</li>
+    <li>strict filtering with the most specific type representation is the best retrieval model.</li>
+</ul>
+
+<p>Furthermore, we perform a detailed analysis of particular configurations on the level of individual queries between a given configuration and the corresponding (term-based) baseline.</p>
+
+<div>
+    <img class="col three first" src="/assets/img/blog/thesis/figs/3.5.png" alt="" title="Results: per-query qualitative results breakdown" />
+</div>
+<div class="col three caption">
+    Results: per-query qualitative results breakdown. Differences in NDCG@10 per query between a given type-aware entity retrieval configuration and its corresponding (term-based) baseline, using only entities with types from that type taxonomy.
+</div>
+
+<p><br /></p>
+
+<p><em>If you are interested in more of this, please read Chapter 3 of my thesis</em> <a href="http://bit.ly/dariogarigliotti-thesis">Task-Based Support in Search Engines</a><em>, for technical details of the problem, the terminology, the methodology, and the experimental results and analysis.</em></p>
+
+
+  </article>
+
+  
+
+</div>
+
+      </div>
+    </div>
+
+    <footer>
+
+  <div class="wrapper">
+    &copy; Copyright 2020 Darío Garigliotti.
+    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+
+    
+  </div>
+
+</footer>
+
+
+    <!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Load Common JS -->
+<script src="/assets/js/common.js"></script>
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+<script src="/assets/js/katex.js"></script>
+
+
+
+
+<!-- Include custom icon fonts -->
+<link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/assets/css/academicons.min.css">
+
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-XXXXXXXXX', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+  </body>
+
+</html>

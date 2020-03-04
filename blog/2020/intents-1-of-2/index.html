@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Darío Garigliotti | Too few people here. Taxi, to the airport!</title>
+  <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+">
+
+  
+
+  <link rel="shortcut icon" href="/assets/img/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="canonical" href="/blog/2020/intents-1-of-2/">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    
+    <span class="site-title">
+        
+        <strong>Darío</strong> Garigliotti
+    </span>
+    
+
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+      <div class="trigger">
+        <!-- About -->
+        <a class="page-link" href="/">about</a>
+
+        <!-- Blog -->
+        <a class="page-link" href="/blog/">blog</a>
+
+        <!-- Pages -->
+        
+          
+        
+          
+        
+          
+        
+          
+            <a class="page-link" href="/lectures/">lectures</a>
+          
+        
+          
+        
+          
+            <a class="page-link" href="/publications/">publications</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+        <!-- Talks: analogous to blog in every aspect of its implementation -->
+        <a class="page-link" href="/talks/">talks</a>
+
+        <!-- CV link -->
+        <!-- <a class="page-link" href="/assets/pdf/CV.pdf">vitae</a> -->
+
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Too few people here. Taxi, to the airport!</h1>
+    <p class="post-meta">January 27, 2020</p>
+  </header>
+
+  <article class="post-content">
+    <p><em>Entity-oriented queries</em> is a possible denomination for those queries which revolve around entities. This means queries whose expected result is an entity or a list of entities, or queries that contain entity mentions. Within entity-oriented queries, we are interested in <em>entity-bearing queries</em>, i.e., those that typically consist of (one of the names of) an entity and possibly additional words that refine the intent behind the query. This part made of complementary context terms is referred to as the <em>refiner</em> of the query. Examples of these queries are <em>“the rock movies”</em> and <em>“london book a hotel.”</em></p>
+
+<p>An envisaged search engine would identify the intent behind such an entity-oriented query and present a result object according to the nature of the intent. For example, a user might ask for the population of the city of Stavanger, say, by querying “stavanger population.” The engine would recognize the population-related intent as a property that can be retrieved from the corresponding entry for Stavanger in a knowledge base of reference. The result might then boil down to a simple entity card for the city, that in particular displays an entry with the number of its population, as taken from the KB. 
+This case is similar to the population field in the entity card for Oslo shown when querying “oslo” in Google, card that we observed in a previous post.</p>
+
+<div>
+    <img class="col two first" src="/assets/img/blog/thesis/figs/1.2.png" alt="" title="Example of an entity card" />
+</div>
+
+<p><br /></p>
+
+<p>In another scenario, the user instead issues “taxi to stavanger airport.” 
+Here, we would instead aim for recognizing that the intent for the Stavanger Airport behind the refiner “taxi to” rather deals with performing a transaction and booking a taxi. A possible result format, illustrated in the following figure, allows the user to provide details of her travel, such as her position and desired time, and displays a button to order a taxi.</p>
+
+<div>
+    <img class="col three first" src="/assets/img/blog/thesis/figs/1.4.png" alt="" title="Envisaged search engine leveraging intents-related knowledge" />
+</div>
+
+<p><br /></p>
+
+<p>In our work, we aim to understand entity-related search intents by studying those query refiners. What do entity-oriented queries ask for, and how can they be fulfilled?</p>
+
+<p>We collect refiners for a set of prominent entities, and aggregate them across entity types to obtain type-level query patterns. For example, by representing with <em>[airport]</em> any entity of the type airport, we are interested in the intent behind “taxi to” in the type-level query pattern <em>“taxi to [airport]”</em>. We work with a representative sample of 50 entity types from Freebase type system. By analyzing an annotated collection of entity-bearing queries, aggregated by entity types, we obtain a clearer understanding of what entity-oriented queries ask for.</p>
+
+<p>In particular, we make observations regarding which searches can be fulfilled by looking up direct answers from a knowledge base (e.g., when seeking the population of a city), and which would require to interact with external services (such as booking a taxi). We then need a suitable scheme to classify the entity intents. After a close inspection of the type-level refiners, we define the following scheme of <em>intent categories</em>. These categories are focused on how (and from which type of source) the information need can be fulfilled.</p>
+
+<h4 id="intent-categorization-scheme">Intent categorization scheme</h4>
+
+<ul>
+    <li><b>Property:</b> The refiner is about getting a specific entity property or attribute that can be looked up in a knowledge base. For example, "children" in the query <i>"angelina jolie children"</i> or "opening times" in <i>"at&amp;t stadium opening times."</i> The criterion does not require the refiner to exist as a property in an actual knowledge base, but rather its existence to be reasonable.
+</li>
+</ul>
+
+<div>
+    <img class="col two first" src="/assets/img/blog/thesis/figs/5.0-2.png" alt="" title="Intent categorization scheme: property category" />
+</div>
+
+<p><br /></p>
+
+<ul>
+    <li><b>Website:</b> The refiner looks to reach a specific website or application. For example, "twitter" in the query <i>"karpathy twitter."</i> </li>
+</ul>
+
+<div>
+    <img class="col two first" src="/assets/img/blog/thesis/figs/5.0-1.png" alt="" title="Intent categorization scheme: website category" />
+</div>
+
+<p><br /></p>
+
+<ul>
+    <li><b>Service:</b> The refiner expresses the need to interact with a service, possibly by redirecting to an external site or app.  
+For example, "menu" in the query <i>"keens steakhouse menu"</i> would indicate the need to access to an external site for reading the restaurant's menu.  
+As another example,  "new album" in <i>"eric clapton new album"</i> looks for a service to read about, or listen to, or buy the new album. The interaction would possibly involve further parameters, like 'from' and 'to' values for "ticket price" in the query <i>"jpass bullet train ticket price."</i></li>
+</ul>
+
+<div>
+    <img class="col two first" src="/assets/img/blog/thesis/figs/5.0-3.png" alt="" title="Intent categorization scheme: service category" />
+</div>
+
+<p><br /></p>
+
+<ul>
+    <li><b>Other:</b> None of the previous ones is applicable.  
+For example, "india" in the query <i>"microsoft india"</i> merely serves to disambiguate the company office from other locations.</li>
+</ul>
+
+<div>
+    <img class="col two first" src="/assets/img/blog/thesis/figs/5.0-4.png" alt="" title="Intent categorization scheme: other category" />
+</div>
+
+<p><br /></p>
+
+<h4 id="understanding-entity-oriented-search-intents">Understanding entity-oriented search intents</h4>
+
+<p>We annotate each of the type-level query patterns in the collection with one of these four intent categories, and obtain a distribution of entity intent categories per type. From the average proportions in these distributions, we observe that a 54.06% of unique entity-oriented queries are to be fulfilled by interacting with some external service or app, meanwhile, 28.6% look for direct answers from a knowledge base. Further, 5.34% of the type-level refiners represent an attempt to reach a website, while 12.08% of them do not fit into any of the previous three categories.</p>
+
+<div>
+    <img class="col three first" src="/assets/img/blog/thesis/figs/5.1.png" alt="" title="Results: distributions of intent categories for the sampled types" />
+</div>
+<div class="col three caption">
+    Distributions of intent categories for the sampled types. Note that the y-axis scales differ.
+</div>
+
+<p><br /></p>
+
+<p>The entity types with the largest proportion of <em>service</em> intents are <code class="language-plaintext highlighter-rouge">netflix genre</code> (with refiners like “videos,” “live”), <code class="language-plaintext highlighter-rouge">election</code> (“map,” “polls”), <code class="language-plaintext highlighter-rouge">football match</code> (“video,” “highlights”), and <code class="language-plaintext highlighter-rouge">music_album</code>.</p>
+
+<p>The <em>property</em> intent category covers refiners that are of a more static nature, e.g., <code class="language-plaintext highlighter-rouge">chemical compound</code> (with refiners like “structural formula,” “molecular weight”), <code class="language-plaintext highlighter-rouge">political party</code> (“slogan,” “president”), <code class="language-plaintext highlighter-rouge">star</code> (“type of star,” “temperature”), or <code class="language-plaintext highlighter-rouge">tower</code> (“hours,” “height”); only the first one is a very prominent type.</p>
+
+<p>Most of the entity types exhibit a non-empty proportion of <em>website</em> intents. Among all the types, this category exceeds the average proportion, e.g., for <code class="language-plaintext highlighter-rouge">organization</code>, <code class="language-plaintext highlighter-rouge">business operation</code>, <code class="language-plaintext highlighter-rouge">hotel</code> and <code class="language-plaintext highlighter-rouge">blogger</code>.  The most frequent website refiners in the whole corpus are “wikipedia,” “twitter,” “facebook,” and “youtube.”</p>
+
+<p>A marginal proportion of refiners are classified as having the <em>other</em> intent. A few exceptional cases with large proportions of other intents are, e.g., <code class="language-plaintext highlighter-rouge">business operation</code> and <code class="language-plaintext highlighter-rouge">house</code> (where the refiner is usually a location), or <code class="language-plaintext highlighter-rouge">basketball player</code> (for which many refiners refer mostly to an NBA franchise, e.g., “lakers”).</p>
+
+<p><br /></p>
+
+<p><em>If you are interested in more of this, please read Sections 5.1 to 5.3 of my thesis</em> <a href="http://bit.ly/dariogarigliotti-thesis">Task-Based Support in Search Engines</a><em>, for technical details of the problem, the terminology, the methodology, and the experimental results and analysis.</em></p>
+
+
+  </article>
+
+  
+
+</div>
+
+      </div>
+    </div>
+
+    <footer>
+
+  <div class="wrapper">
+    &copy; Copyright 2020 Darío Garigliotti.
+    Powered by <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme. Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+
+    
+  </div>
+
+</footer>
+
+
+    <!-- Load jQuery -->
+<script src="//code.jquery.com/jquery-1.12.4.min.js"></script>
+
+<!-- Load Common JS -->
+<script src="/assets/js/common.js"></script>
+
+
+<!-- Load KaTeX -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.js"></script>
+<script src="/assets/js/katex.js"></script>
+
+
+
+
+<!-- Include custom icon fonts -->
+<link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="/assets/css/academicons.min.css">
+
+
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-XXXXXXXXX', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+  </body>
+
+</html>
